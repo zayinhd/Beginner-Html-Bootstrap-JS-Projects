@@ -1,0 +1,39 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
+        "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+.main-container {
+    border: 1px solid rgb(208, 203, 203);
+}
+
+.todo-container {
+    visibility: hidden;
+}
+
+p {
+    text-transform: capitalize;
+}
+/* show container when Todo item is added */
+.show-container {
+    visibility: visible;
+}
+
+/* add line through when Todo item is clicked */
+.mark-todo {
+    text-decoration: line-through;
+}
+
+.clear-btn {
+    text-align: center;
+    color: red;
+    background-color: transparent;
+    border-radius: 5px;
+    border: 1px solid red;
+}

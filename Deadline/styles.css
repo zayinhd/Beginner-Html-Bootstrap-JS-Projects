@@ -1,0 +1,9 @@
+.main-container {
+    background-color: rgb(42, 29, 157);
+    border-radius: 5px;
+}
+
+.deadline-format {
+    font-size: 20px;
+    border-radius: 5px;
+}
