@@ -34,28 +34,30 @@ clearBtn.addEventListener("click", function () {
 window.addEventListener("DOMContentLoaded", setupItems);
 
 //Create a Todo when Add button is clicked
-addBtn.addEventListener("click", function (e) {
+form.addEventListener("submit", function (e) {
     //prevent default behaviour of event
     e.preventDefault();
 
     //get value from Input
     const value = todo.value;
 
+    //create a new Id for each element
+    const id = new Date().getTime().toString();
+
     if (value) {
         //use value to create a Todo item
-        createListItem(value);
+        createListItem(id, value);
+
+        //show Alert
+        showAlert("Todo has been successfully added", "success");
 
         //show TodoContainer
         todoContainer.classList.add("show-container");
 
-        //show Alert
-        showAlert("Todo has been successfully added", "success");
-        todo.value = "";
-
         //add list to local Storage
-        addTodoToLocalStorage(value);
+        addTodoToLocalStorage(id, value);
 
-        // localStorage.setItem("list", JSON.stringify(value));
+        todo.value = "";
     } else {
         showAlert("Please, Enter a Todo", "danger");
     }
@@ -64,13 +66,21 @@ addBtn.addEventListener("click", function (e) {
 //****FUNCTIONS
 
 //Create List function
-function createListItem(value) {
+function createListItem(id, value) {
     // create a new element
     const elem = document.createElement("article");
     elem.classList.add("row", "col-12", "pt-3", "list-item");
 
+    // add ID
+    const attr = document.createAttribute("data-id");
+    attr.value = id;
+    elem.setAttributeNode(attr);
+
     // add innerHtml to new element created
-    elem.innerHTML = `<p class="text-left gr-2 col">${value}</p>
+    elem.innerHTML = `<div class="col-1">
+        <i class="bi bi-check-circle-fill bi-check-circle check-btn"></i> 
+    </div>
+    <p class="text-left  col">${value}</p>
     <div class="col-2">
         <button class="btn-cnt px-1 del-btn">
             <i class="bi bi-trash"></i>
@@ -80,15 +90,12 @@ function createListItem(value) {
     //append element to Todolist
     todoList.appendChild(elem);
 
-    //Add line through to Todo item when clicked
-    elem.addEventListener("click", function (e) {
-        console.log(e.currentTarget);
-        e.currentTarget.classList.toggle("mark-todo");
-    });
-
-    const deleteBtn = document.querySelector(".del-btn");
+    //Check Todo item
+    const checkBtn = elem.querySelector(".check-btn");
+    checkBtn.addEventListener("click", checkTodo);
 
     // Delete the current Todo item when clicked
+    const deleteBtn = document.querySelector(".del-btn");
     deleteBtn.addEventListener("click", deleteTodo);
 }
 
@@ -104,10 +111,24 @@ function showAlert(text, action) {
     }, 1000);
 }
 
-function deleteTodo(e, value) {
-    e.preventDefault();
+function checkTodo(e) {
+    const element = e.currentTarget;
+
+    // strike through Todo item
+    element.parentElement.nextElementSibling.classList.toggle("mark-todo");
+
+    //toggle Check button
+    if (element.classList.contains("bi-check-circle")) {
+        element.classList.remove("bi-check-circle");
+    } else {
+        element.classList.add("bi-check-circle");
+    }
+}
+//Delete Todo item function
+function deleteTodo(e) {
     //get grand parent of button clicked
     const elem = e.currentTarget.parentElement.parentElement;
+    const id = elem.dataset.id;
 
     // remove the current Todo item
     todoList.removeChild(elem);
@@ -118,7 +139,7 @@ function deleteTodo(e, value) {
 
     let items = getItemsFromStorage();
     items = items.filter(function (item) {
-        if (item.value !== value) {
+        if (item.id !== id) {
             return item;
         }
     });
@@ -137,8 +158,8 @@ function getItemsFromStorage() {
 }
 
 //Add Todo Item to Local Storage
-function addTodoToLocalStorage(value) {
-    const todo = { value: value };
+function addTodoToLocalStorage(id, value) {
+    const todo = { id: id, value: value };
     let items = getItemsFromStorage();
     //add Todo value to local storage
     items.push(todo);
@@ -153,7 +174,7 @@ function setupItems() {
 
     if (items.length > 0) {
         items.forEach(function (item) {
-            createListItem(item.value);
+            createListItem(item.id, item.value);
         });
 
         todoContainer.classList.add("show-container");
