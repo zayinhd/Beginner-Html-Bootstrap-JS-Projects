@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Grocery-list</title>
-        <link rel="stylesheet" href="style.css" />
+
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
             rel="stylesheet"
@@ -15,6 +15,55 @@
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
         />
+
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Lucida Sans", "Lucida Sans Regular",
+                    "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana,
+                    sans-serif;
+            }
+
+            .main-container {
+                border: 1px solid rgb(208, 203, 203);
+            }
+
+            .grocery-container {
+                visibility: hidden;
+            }
+            .show-container {
+                visibility: visible;
+            }
+
+            article:hover {
+                cursor: pointer;
+            }
+
+            p {
+                text-transform: capitalize;
+            }
+
+            .btn-cnt {
+                border: 1px solid rgb(208, 203, 203);
+            }
+
+            .btn-cnt:hover {
+                background-color: rgb(42, 82, 227);
+            }
+
+            .clear-btn {
+                text-align: center;
+                color: red;
+                background-color: transparent;
+                border-radius: 5px;
+                border: 1px solid red;
+            }
+        </style>
     </head>
     <body>
         <!-- heading -->
