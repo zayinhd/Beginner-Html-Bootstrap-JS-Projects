@@ -1,1 +1,0 @@
-submitBtn.addEventListener("click", function () {});
