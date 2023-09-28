@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Weather</title>
+
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+        />
+        <!-- Css -->
+        <style>
+            main {
+                border-radius: 10px;
+            }
+            .weather-container {
+                display: none;
+            }
+        </style>
+    </head>
+    <body class="bg-primary">
+        <!-- Weather UI -->
+        <main class="container bg-light mt-5 p-3 w-50 text-center">
+            <div>
+                <h1>Weather</h1>
+                <hr />
+                <div class="row">
+                    <div class="col">
+                        <input
+                            type="search"
+                            class="form-control city-input"
+                            placeholder="Enter city name"
+                        />
+                    </div>
+                    <div class="col-2">
+                        <button class="btn btn-primary search-btn">
+                            <i class="bi bi-search"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="error-message"></div>
+                <div class="weather-container">
+                    <img src="" alt="" id="city-weather-img" />
+                    <h1 id="city-name"></h1>
+                    <h1 id="city-temp"></h1>
+                    <div class="row">
+                        <div class="humidity col-6">
+                            <h1 id="city-humidity"></h1>
+                        </div>
+                        <div class="wind-speed col-6">
+                            <h1 id="city-wind-speed"></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+        <!-- End of Weather UI -->
+
+        <!-- Bootstrap cdn for Js -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+            crossorigin="anonymous"
+        ></script>
+
+        <!-- Javascript src -->
+        <script src="app.js"></script>
+    </body>
+</html>
