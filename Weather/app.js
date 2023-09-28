@@ -31,9 +31,23 @@ async function checkWeather(city) {
         cityName.innerHTML = data.name;
         cityTemp.innerHTML = Math.round(data.main.temp) + "°C";
         cityWindSpeed.innerHTML =
-            data.wind.speed + "km/h" + `<span>Wind Speed</span>`;
+            data.wind.speed + "km/h" + `<br><span> Wind Speed</span>`;
         cityHumidity.innerHTML =
-            data.main.humidity + "%" + `<span>Humidity</span>`;
+            data.main.humidity + "%" + `<br><span> Humidity</span>`;
+
+        if (data.weather[0].main == "Clouds") {
+            cityWeatherImg.src = "imgs/clouds.png";
+        } else if (data.weather[0].main == "Clear") {
+            cityWeatherImg.src = "imgs/clear.png";
+        } else if (data.weather[0].main == "Rain") {
+            cityWeatherImg.src = "imgs/rain.png";
+        } else if (data.weather[0].main == "Snow") {
+            cityWeatherImg.src = "imgs/snow.png";
+        } else if (data.weather[0].main == "Drizzle") {
+            cityWeatherImg.src = "imgs/drizzle.png";
+        } else if (data.weather[0].main == "Mist") {
+            cityWeatherImg.src = "imgs/Mist.png";
+        }
     }
 }
 

@@ -3,7 +3,6 @@ const username = document.getElementById("username-input");
 const email = document.getElementById("email-input");
 const password = document.getElementById("password-input");
 const confirmPassword = document.getElementById("confirmPassword-input");
-const submitBtn = document.querySelector(".submit-btn");
 const form = document.querySelector(".form");
 
 form.addEventListener("submit", function (e) {
