@@ -37,7 +37,7 @@ generateBtn.addEventListener("click", () => {
 });
 
 copyBtn.addEventListener("click", () => {
-    return colorValue.value;
+    navigator.clipboard.writeText(colorValue.value);
 });
 // ***Functions***
 function getRandomValue() {
